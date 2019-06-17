@@ -1,5 +1,7 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
+import NumericInput from 'react-numeric-input';
+import { SketchPicker } from 'react-color';
 import './sass/tables.scss';
   
 class App extends React.Component {
@@ -18,8 +20,13 @@ class App extends React.Component {
 		this.state = {
 			data: data,
 			output: "",
-			modalIsOpen: false
-		  }
+			options: {
+				width: 800,
+				fontsize: 14,
+				color: "#0091ff"
+			},
+			displayColorPicker: false,
+		}
 		
 		this.setRows = this.setRows.bind(this);
 		this.export = this.export.bind(this);
@@ -29,7 +36,12 @@ class App extends React.Component {
 		this.removeRow = this.removeRow.bind(this);
 		this.copyToClipboard = this.copyToClipboard.bind(this);
 		this.onPaste = this.onPaste.bind(this);
+		this.updateOptions = this.updateOptions.bind(this);
 		
+	}
+
+	componentDidMount() {
+		this.export()
 	}
 
 	cellChanged(e, row, col) {
@@ -45,14 +57,14 @@ class App extends React.Component {
 			thead = document.createElement("thead"),
 			tbody = document.createElement("tbody");
 
-		table.style.cssText = "border-collapse: separate; border-spacing: 0; width: 100%; text-align: left; color: #666; margin: 0;"
+		table.style.cssText = `border-collapse: separate; border-spacing: 0; width: 100%; max-width: ${this.state.options.width}px; text-align: left; color: #666; margin: 0 auto; font-size: ${this.state.options.fontsize}px;`
 		tbody.style.cssText = "background-color: #fff;"
 		table.width = "100%"
 
 		for(let i = 0; i < this.state.data.length; i++) {
 			var row = document.createElement("tr"),
 				section = i===0 ? thead : tbody,
-				cssText = i===0 ? "background-color: #00a6e4; border-bottom: 0; padding: 12px 16px; color: #fff;" : "padding: 12px 16px;";
+				cssText = i===0 ? `background-color: ${this.state.options.color}; border-bottom: 0; padding: 12px 16px; color: #fff;` : `padding: 12px 16px;`;
 			if(i % 2) {
 				row.style.cssText = "background-color: #f4f3f3;"
 			}
@@ -157,6 +169,33 @@ class App extends React.Component {
 		}
 	}
 
+	updateOptions() {
+		var options = this.state.options
+		for(let option in this.state.options) {
+			let el = document.querySelector('.table-option[data-option="'+option+'"]');
+			if(el!==null && el.tagName.toLowerCase()==='input') {
+				options[option] = el.value
+			}
+		}
+		this.setState({options: options})
+		this.export();
+	}
+
+	colorpickerClick = () => {
+		this.setState({ displayColorPicker: !this.state.displayColorPicker })
+	};
+
+	colorpickerClose = () => {
+		this.setState({ displayColorPicker: false })
+	};
+
+	colorpickerChange = (color) => {
+		var options = this.state.options
+		options.color = color.hex
+		this.setState({ options: options})
+		this.export();
+	};
+
 
 	render() {
 		return (
@@ -172,10 +211,10 @@ class App extends React.Component {
 						<h1>Table<span>Maker</span></h1>
 						<div className="table-wrapper row">
 							<div className="col">
-								<table width="100%" style={{textAlign: 'left'}} className="table">
+								<table width="100%" style={{textAlign: 'left', fontSize: this.state.options.fontsize+"px"}} className="table">
 									<thead>
 										<tr key={0}>
-											{this.state.data[0].map((c, cidx) => <th key={'0_'+cidx} onPaste={ this.onPaste } onBlur={(e) => this.cellChanged(e, 0, cidx)} contentEditable="true">{c}</th>)}
+											{this.state.data[0].map((c, cidx) => <th key={'0_'+cidx} style={{ backgroundColor: this.state.options.color }} onPaste={ this.onPaste } onBlur={(e) => this.cellChanged(e, 0, cidx)} contentEditable="true">{c}</th>)}
 										</tr>
 									</thead>
 									<tbody>
@@ -198,8 +237,55 @@ class App extends React.Component {
 							<input id="output" defaultValue={this.state.output} ref={(htmlOutput) => this.htmlOutput = htmlOutput} />
 							<div className="btn-copy" onClick={this.copyToClipboard}>Copy Code</div>
 						</div>
+						<div className="toolbar-wrapper">
+							<h3>Export Options</h3>
+							<div className="toolbar">
+							
+								<div className="row">
+									<div className="col">
+										<div class="row">
+											<div class="col">
+												<label>width:</label>
+											</div>
+											<div class="col">
+												<NumericInput id="table_width" className="table-option" data-option="width" value={this.state.options.width} step={1} min={1} max={9999} onChange={this.updateOptions}/>
+											</div>
+										</div>
+									</div>
+									<div className="col">
+										<div class="row">
+											<div class="col">
+												<label>font size:</label>
+											</div>
+											<div class="col">
+												<NumericInput id="table_fontsize" className="table-option" data-option="fontsize" value={this.state.options.fontsize} step={1} min={4} max={32} onChange={this.updateOptions}/>
+											</div>
+										</div>
+									</div>
+									<div className="col">
+										<div class="row">
+											<div class="col">
+												<label>header color:</label>
+											</div>
+											<div class="col">
+												<div class="colorpicker">
+													<div className="swatch" onClick={ this.colorpickerClick }>
+														<div className="color" style={{background: this.state.options.color}} />
+													</div>
+													{ this.state.displayColorPicker ? <div className="popover">
+													<div className="cover" onClick={ this.colorpickerClose }/>
+													<SketchPicker color={ this.state.options.color } onChange={ this.colorpickerChange } />
+													</div> : null }
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
 					</div>
-					
 				</div>
 				
 			</div>
