@@ -1,4 +1,4 @@
 Header set Connection keep-alive
-<filesMatch "\.(html|css|js|png)$">
+<filesMatch "\.(html|css|js|png|jpg|svg)$">
     Header set Cache-Control "max-age=31557600, public"
 </filesMatch>
