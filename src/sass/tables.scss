@@ -2,40 +2,43 @@
 
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('./fonts/Avenir-Light.woff2') format('woff2'),
-        url('./fonts/Avenir-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Avenir';
-    src: url('./fonts/Avenir-Book.woff2') format('woff2'),
-        url('./fonts/Avenir-Book.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
 	font-family: 'Avenir';
-    src: url('./fonts/Avenir-Roman.woff2') format('woff2'),
-        url('./fonts/Avenir-Roman.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Avenir';
-    src: url('./fonts/Avenir-Medium.woff2') format('woff2'),
-        url('./fonts/Avenir-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
+	src: url('./fonts/Avenir-Light.woff2') format('woff2'),
+		url('./fonts/Avenir-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('./fonts/Avenir-Heavy.woff2') format('woff2'),
-        url('./fonts/Avenir-Heavy.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
+	font-family: 'Avenir';
+	src: url('./fonts/Avenir-Book.woff2') format('woff2'),
+		url('./fonts/Avenir-Book.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('./fonts/Avenir-Roman.woff2') format('woff2'),
+		url('./fonts/Avenir-Roman.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('./fonts/Avenir-Medium.woff2') format('woff2'),
+		url('./fonts/Avenir-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url('./fonts/Avenir-Heavy.woff2') format('woff2'),
+		url('./fonts/Avenir-Heavy.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
 }
 
 html,
@@ -77,7 +80,8 @@ h4 {
 	font-family: "Avenir", sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
 	font-weight: 700;
 }
 
@@ -93,10 +97,10 @@ input {
 	line-height: 1.2;
 	padding: $padding*0.3 $padding*0.35;
 	background: #fff;
-	border:none;
+	border: none;
 	border-radius: 6px;
 	color: rgba($color-text, 0.5);
-	box-shadow: 0.07rem 0.07rem 0.3rem rgba(0,0,0,.1);
+	box-shadow: 0.07rem 0.07rem 0.3rem rgba(0, 0, 0, .1);
 }
 
 .container {
@@ -145,6 +149,7 @@ input {
 	}
 
 }
+
 .row {
 	display: flex;
 	align-items: center;
@@ -161,15 +166,18 @@ input {
 	min-height: 100vh;
 	padding-top: $padding*2;
 	padding-bottom: $padding*2;
+
 	h1 {
 		font-size: 4rem;
 		margin-bottom: $padding;
 		line-height: 1.2;
 		font-weight: 700;
 		margin-top: 0;
+
 		span {
 			color: $color-primary;
 		}
+
 		@media(max-width: 500px) {
 			font-size: 3rem;
 		}
@@ -182,39 +190,62 @@ input {
 	border-collapse: collapse;
 	border-spacing: 0;
 	border: none;
-	border-radius: 6px;
 	width: 100%;
 	text-align: left;
 	color: #666;
 	margin: 0;
-	box-shadow: 0.1rem 0.1rem 0.5rem rgba(0,0,0,.1);
+	border-radius: 6px;
 	overflow: hidden;
+	box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, .1);
+
 	thead {
 		th {
 			border-bottom: 0;
 			padding: 0.75rem 1rem;
 			color: #fff;
 			border-right: 1px solid rgba($color-border-alt, 0.2);
+
 			&:last-child {
-				border:none;
+				border: none;
+			}
+
+			&:focus {
+				outline: none;
+				outline-style: none;
+				box-shadow: inset 0px 0px 0px 1px rgba($color-primary, .5);
 			}
 		}
 	}
+
 	tbody {
 		background-color: #fff;
+
 		td {
 			padding: 0.75rem 1rem;
 			border-right: 1px solid rgba($color-border-alt, 0.1);
+
 			&:last-child {
-				border:none;
+				border: none;
+			}
+
+			&:focus {
+				outline: none;
+				outline-style: none;
+				box-shadow: inset 0px 0px 0px 1px rgba($color-primary, .25);
 			}
 		}
-		tr:nth-child(2n) {
-			background-color: rgba($color-border-alt, 0.1);
+
+		tr {
+			&:nth-child(2n) {
+				background-color: rgba($color-border-alt, 0.1);
+			}
+
 		}
 	}
+
 	&.center {
 		text-align: center;
+
 		td,
 		th {
 			text-align: center;
@@ -227,6 +258,7 @@ input {
 .table-actions {
 	display: block;
 	width: 100%;
+
 	.table-action {
 		position: relative;
 		text-align: center;
@@ -248,6 +280,7 @@ input {
 		&:hover {
 			background: $color-secondary;
 		}
+
 		.tooltiptext {
 			visibility: hidden;
 			width: 120px;
@@ -259,10 +292,11 @@ input {
 			position: absolute;
 			width: 120px;
 			bottom: calc(100% + 10px);
-			left: 50%; 
+			left: 50%;
 			margin-left: -60px;
 			z-index: 1;
 		}
+
 		&:hover {
 			.tooltiptext {
 				visibility: visible;
@@ -306,7 +340,8 @@ input {
 	display: flex;
 	align-items: center;
 	margin-top: $padding;
-	box-shadow: 0.07rem 0.07rem 0.3rem rgba(0,0,0,.1);
+	box-shadow: 0.07rem 0.07rem 0.3rem rgba(0, 0, 0, .1);
+
 	input {
 		width: 100%;
 		font-family: "Source Code Pro", monospace;
@@ -317,6 +352,7 @@ input {
 		color: rgba($color-text, 0.5);
 		box-shadow: none;
 	}
+
 	.btn-copy {
 		font-family: "Avenir", sans-serif;
 		font-weight: 700;
@@ -347,10 +383,11 @@ input {
 }
 
 .toolbar-wrapper {
-	display:table;
+	display: table;
 	margin: $padding 0 0;
 	width: auto;
 	position: relative;
+
 	h3 {
 		text-align: left;
 		font-size: 15px;
@@ -359,38 +396,49 @@ input {
 		font-weight: 700;
 	}
 }
+
 .toolbar {
-	display:block;
+	display: block;
 	margin: 0;
 	background: #fff;
 	padding: $padding*0.4 $padding*0.4 $padding*0.4+$option-offset;
 	border-radius: 6px;
-	box-shadow: 0.07rem 0.07rem 0.3rem rgba(0,0,0,.1);
+	box-shadow: 0.07rem 0.07rem 0.3rem rgba(0, 0, 0, .1);
+
 	.row {
 		justify-content: center;
 		align-items: flex-end;
 		margin-left: -$col-spacing;
 		margin-right: -$col-spacing;
+
 		.col {
 			margin-top: auto;
 			padding-left: $col-spacing;
 			padding-right: $col-spacing;
+
 			.row {
 				margin-left: -$option-spacing;
 				margin-right: -$option-spacing;
+
+				@media(max-width: 500px) {
+					display: block;
+				}
+
 				.col {
-					padding-left:$option-spacing;
+					padding-left: $option-spacing;
 					padding-right: $option-spacing;
 					position: relative;
 				}
 			}
 		}
-		
+
 	}
+
 	.react-numeric-input {
 		position: relative;
 		display: block !important;
 		padding-right: 14px;
+
 		input {
 			font-family: "Source Code Pro", monospace;
 			font-weight: 400 !important;
@@ -401,18 +449,21 @@ input {
 			padding: 0 !important;
 			line-height: 1 !important;
 			border: none !important;
-			outline-style:none !important;
-			box-shadow:none !important;
+			outline-style: none !important;
+			box-shadow: none !important;
 			color: rgba($color-text, 0.5) !important;
 			text-align: center;
+
 			&#table_fontsize {
 				width: 24px !important;
 			}
-		
+
 		}
+
 		b {
 			display: none !important;
 		}
+
 		&:after {
 			content: "";
 			display: block;
@@ -423,6 +474,7 @@ input {
 			right: 0;
 			border-bottom: 1px solid $color-primary;
 		}
+
 		&:before {
 			font-family: "Source Code Pro", monospace;
 			content: "px";
@@ -436,6 +488,7 @@ input {
 			bottom: 0;
 		}
 	}
+
 	label {
 		font-family: "Avenir", sans-serif;
 		font-size: $option-font-size;
@@ -445,18 +498,24 @@ input {
 		position: relative;
 		margin: 0;
 		padding: 0;
+
+		@media(max-width: 500px) {
+			margin-bottom: $padding*0.15;
+		}
 	}
-	
+
 }
 
 .colorpicker {
 	display: flex;
 	align-items: flex-end;
+
 	.swatch {
 		padding: 0;
-		display: inline-block; 
+		display: inline-block;
 		cursor: pointer;
 		margin-bottom: -$option-offset*0.5;
+
 		.color {
 			border-radius: 6px;
 			width: 36px;
@@ -464,10 +523,12 @@ input {
 			border-radius: 0px;
 		}
 	}
+
 	.popover {
 		position: absolute;
 		bottom: 100%;
 		z-index: 2;
+
 		.cover {
 			position: fixed;
 			top: 0px;
@@ -476,5 +537,52 @@ input {
 			left: 0px;
 		}
 	}
-	
+
+}
+
+.footer {
+	margin-top: $padding*2;
+	border-top: 1px solid rgba($color-text, 0.1);
+	padding: $padding 0;
+
+	.col {
+		width: 100%;
+	}
+
+	.social-media {
+		text-align: right;
+
+		a {
+			position: relative;
+			margin-top: -4px;
+			text-align: center;
+			display: inline-block;
+			color: $color-background;
+			background-color: rgba($color-text, 0.25);
+			font-size: 1.05rem;
+			line-height: 1;
+			padding: 0.5rem 0.5rem;
+			border-radius: 3rem;
+			width: 32px;
+			height: 32px;
+			margin-left: $padding*0.25;
+			-webkit-transition: all $transition-time ease-in-out;
+			-moz-transition: all $transition-time ease-in-out;
+			-o-transition: all $transition-time ease-in-out;
+			transition: all $transition-time ease-in-out;
+
+			&:hover,
+			:focus {
+				color: $color-background;
+				background-color: $color-primary;
+			}
+		}
+	}
+
+	.copyright {
+		text-align: left;
+		font-size: 12px;
+		color: rgba($color-text, 0.45);
+	}
+
 }

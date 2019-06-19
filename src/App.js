@@ -202,13 +202,13 @@ class App extends React.Component {
 			<div className="App">
 				<Helmet>
 					<meta name="robots" content="noindex,follow" />
-					<title>TableMaker</title>
+					<title>tabl.dev</title>
 					<meta name="description" content="Create styled tables" />
 				</Helmet>
 				
 				<div id="table-maker">
 					<div className="container">
-						<h1>Table<span>Maker</span></h1>
+						<h1>tabl<span>.dev</span></h1>
 						<div className="table-wrapper row">
 							<div className="col">
 								<table width="100%" style={{textAlign: 'left', fontSize: this.state.options.fontsize+"px"}} className="table">
@@ -284,10 +284,20 @@ class App extends React.Component {
 								</div>
 							</div>
 						</div>
-						
+						<div className="footer row">
+							<div className="col">
+								<div className="copyright">
+									© { new Date().getFullYear() } tabl.dev
+								</div>
+							</div>
+							<div className="col">
+								<div className="social-media">
+									<a href="https://github.com/Szar/tabl" target="_blank" rel="noopener noreferrer"><i className="fa fa-github-alt" aria-hidden="true"></i></a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				
 			</div>
 		)
 	}

@@ -1,6 +1,7 @@
 {
-  "name": "tablemaker",
+  "name": "tabl",
   "version": "0.1.0",
+  "homepage": "https://tabl.dev/",
   "private": true,
   "dependencies": {
     "node-sass": "^4.12.0",
