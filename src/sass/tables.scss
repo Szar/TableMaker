@@ -1,6 +1,5 @@
 @import './variables';
 
-
 @font-face {
 	font-family: 'Avenir';
 	src: url('./fonts/Avenir-Light.woff2') format('woff2'),
@@ -39,6 +38,13 @@
 		url('./fonts/Avenir-Heavy.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url('./fonts/Avenir-Black.woff2') format('woff2'),
+        url('./fonts/Avenir-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
 }
 
 html,
@@ -82,7 +88,7 @@ h4 {
 
 h1,
 h2 {
-	font-weight: 700;
+	font-weight: 900;
 }
 
 * {
@@ -168,10 +174,10 @@ input {
 	padding-bottom: $padding*2;
 
 	h1 {
-		font-size: 4rem;
+		font-size: 4.7rem;
 		margin-bottom: $padding;
-		line-height: 1.2;
-		font-weight: 700;
+		line-height: 1.03;
+		font-weight: 900;
 		margin-top: 0;
 
 		span {
@@ -262,11 +268,10 @@ input {
 	.table-action {
 		position: relative;
 		text-align: center;
-		width: 24px;
-		height: 24px;
-		position: relative;
-		font-size: 11px;
-		padding: $padding*0.19 $padding*0.18;
+		width: 28px;
+		height: 28px;
+		font-size: 12px;
+		padding: $padding*0.24 $padding*0.23;
 		border-radius: $padding;
 		background: $color-primary;
 		line-height: 1;
@@ -318,6 +323,7 @@ input {
 		text-align: left;
 
 		.table-action {
+			text-align: center;
 			display: inline-block;
 			margin-right: $padding*0.25;
 		}

@@ -243,32 +243,32 @@ class App extends React.Component {
 							
 								<div className="row">
 									<div className="col">
-										<div class="row">
-											<div class="col">
+										<div className="row">
+											<div className="col">
 												<label>width:</label>
 											</div>
-											<div class="col">
+											<div className="col">
 												<NumericInput id="table_width" className="table-option" data-option="width" value={this.state.options.width} step={1} min={1} max={9999} onChange={this.updateOptions}/>
 											</div>
 										</div>
 									</div>
 									<div className="col">
-										<div class="row">
-											<div class="col">
+										<div className="row">
+											<div className="col">
 												<label>font size:</label>
 											</div>
-											<div class="col">
+											<div className="col">
 												<NumericInput id="table_fontsize" className="table-option" data-option="fontsize" value={this.state.options.fontsize} step={1} min={4} max={32} onChange={this.updateOptions}/>
 											</div>
 										</div>
 									</div>
 									<div className="col">
-										<div class="row">
-											<div class="col">
+										<div className="row">
+											<div className="col">
 												<label>header color:</label>
 											</div>
-											<div class="col">
-												<div class="colorpicker">
+											<div className="col">
+												<div className="colorpicker">
 													<div className="swatch" onClick={ this.colorpickerClick }>
 														<div className="color" style={{background: this.state.options.color}} />
 													</div>
